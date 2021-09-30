@@ -1,0 +1,22 @@
+{
+  "name": "03-supportbank",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kit-howlett/03-supportbank-js.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kit-howlett/03-supportbank-js/issues"
+  },
+  "homepage": "https://github.com/kit-howlett/03-supportbank-js#readme",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
+}
