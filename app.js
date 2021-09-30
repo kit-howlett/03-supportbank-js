@@ -1,4 +1,5 @@
 const fs = require("fs");
+const readlineSync = require("readline-sync");
 
 class Account {
   constructor(name) {
@@ -64,14 +65,6 @@ console.log(accounts);
 // FUNCTIONS
 function removeHeaderFromCSV(csvFile) {
   csvFile.shift();
-}
-
-function getOrCreateAccount(accountName) {
-  for (let i = 0; i < accounts.length; i++) {
-    if (accounts[i].name === accountName) return accounts[i];
-  }
-
-  return createNewAccount(accountName);
 }
 
 function createNewAccount(accountName) {
