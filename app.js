@@ -61,8 +61,8 @@ for (let i = 0; i < transactions.length; i++) {
 
 
   updateAccountBalance(accountFrom, accountTo, currentTransaction.amount);
-  addToAccountTransactionLog(accountFrom, currentTransaction);
-  addToAccountTransactionLog(accountTo, currentTransaction);
+  updateAccountTransactionLog(accountFrom, currentTransaction);
+  updateAccountTransactionLog(accountTo, currentTransaction);
 }
 
 // FUNCTIONS
@@ -90,7 +90,7 @@ function updateAccountBalance(accountFrom, accountTo, amount) {
   accountTo.addToBalance(amount);
 }
 
-function addToAccountTransactionLog(account, currentTransaction) {
+function updateAccountTransactionLog(account, currentTransaction) {
   account.addTransaction(currentTransaction);
 }
 
@@ -102,7 +102,7 @@ function listAllAccounts() {
   }
 }
 
-function currencyFormatter(num) {
-  num = num.toFixed(2);
-  return num > 0 ? `£${num}` : `-£${Math.abs(num)}`;
+function currencyFormatter(value) {
+  value = value.toFixed(2);
+  return value > 0 ? `£${value}` : `-£${Math.abs(value)}`;
 }
