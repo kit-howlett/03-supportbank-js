@@ -1,11 +1,11 @@
 const fs = require("fs");
-const readlineSync = require("readline-sync");
+// const readlineSync = require("readline-sync");
 
 class Account {
   constructor(name) {
     this.name = name;
     this.balance = 0;
-    this.transactions = [];
+    this.transactionLog = [];
   }
 
   addToBalance(amount) {
@@ -16,7 +16,9 @@ class Account {
     this.balance -= amount;
   }
 
-  addTransaction() {}
+  addTransaction(transaction) {
+    this.transactionLog.push(transaction);
+  }
 }
 
 class Transaction {
@@ -57,10 +59,11 @@ for (let i = 0; i < transactions.length; i++) {
   const accountFrom = getOrCreateAccount(currentTransaction.from);
   const accountTo = getOrCreateAccount(currentTransaction.to);
 
-  updateAccountRecords(accountFrom, accountTo, currentTransaction.amount);
-}
 
-console.log(accounts);
+  updateAccountBalance(accountFrom, accountTo, currentTransaction.amount);
+  addToAccountTransactionLog(accountFrom, currentTransaction);
+  addToAccountTransactionLog(accountTo, currentTransaction);
+}
 
 // FUNCTIONS
 function removeHeaderFromCSV(csvFile) {
@@ -82,7 +85,11 @@ function createNewAccount(accountName) {
   return newAccount;
 }
 
-function updateAccountRecords(accountFrom, accountTo, amount) {
+function updateAccountBalance(accountFrom, accountTo, amount) {
   accountFrom.removeFromBalance(amount);
   accountTo.addToBalance(amount);
+}
+
+function addToAccountTransactionLog(account, currentTransaction) {
+  account.addTransaction(currentTransaction);
 }
