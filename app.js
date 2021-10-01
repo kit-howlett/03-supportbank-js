@@ -67,6 +67,14 @@ function removeHeaderFromCSV(csvFile) {
   csvFile.shift();
 }
 
+function getOrCreateAccount(accountName) {
+  for (const account of accounts) {
+    if (account.name === accountName) return account;
+  }
+
+  return createNewAccount(accountName);
+}
+
 function createNewAccount(accountName) {
   const newAccount = new Account(accountName);
   accounts.push(newAccount);
