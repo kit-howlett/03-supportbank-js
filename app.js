@@ -1,5 +1,5 @@
 const fs = require("fs");
-// const readlineSync = require("readline-sync");
+const readlineSync = require("readline-sync");
 
 class Account {
   constructor(name) {
@@ -92,4 +92,17 @@ function updateAccountBalance(accountFrom, accountTo, amount) {
 
 function addToAccountTransactionLog(account, currentTransaction) {
   account.addTransaction(currentTransaction);
+}
+
+function listAllAccounts() {
+  console.log('\nListing all accounts...\n');
+
+  for (const account of accounts) {
+    console.log(`${account.name}: ${currencyFormatter(account.balance)}\n`);
+  }
+}
+
+function currencyFormatter(num) {
+  num = num.toFixed(2);
+  return num > 0 ? `£${num}` : `-£${Math.abs(num)}`;
 }
